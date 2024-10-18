@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   token_conversion2.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: daeunki2 <daeunki2@student.42.fr>          +#+  +:+       +#+        */
+/*   By: theveste <theveste@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/17 17:25:25 by daeunki2          #+#    #+#             */
-/*   Updated: 2024/10/17 17:25:25 by daeunki2         ###   ########.fr       */
+/*   Updated: 2024/10/18 16:47:00 by theveste         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,9 +47,9 @@ t_token	*token_to_etoken(t_token *old)
 	t_token		*result;
 	int			*iword;
 
-	lexemes = word_to_lexemes(old->str);
+	lexemes = word_to_lexemes(old->str); // replace the quote so that we have a clean phrase and add tell us if it need to be expanded or not
 	if (old->type != heredoc)
-		replace_params(lexemes);
+		replace_params(lexemes); // i don't know
 	iword = lexemes_to_int(lexemes, old->type);
 	result = iword_to_tokens(iword);
 	free(iword);

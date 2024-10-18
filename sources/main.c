@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: daeunki2 <daeunki2@student.42.fr>          +#+  +:+       +#+        */
+/*   By: theveste <theveste@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/17 17:21:37 by daeunki2          #+#    #+#             */
-/*   Updated: 2024/10/18 14:35:27 by daeunki2         ###   ########.fr       */
+/*   Updated: 2024/10/18 16:15:30 by theveste         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ void	do_the_job(t_token **tokens, t_job **jobs)
 	t_token	**tmp;
 
 	tmp = get_token_address();
-	*tmp = parse_tokens(tokens, free); //??
+	*tmp = parse_tokens(tokens, free); //put the redirection option, either in or out in the node of the file
 	expansion(get_token_address());
 	open_file_redir(get_token_address()); // just simple check
 	*jobs = extract_jobs(*get_token_address());

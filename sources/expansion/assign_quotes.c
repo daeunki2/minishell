@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   assign_quotes.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: daeunki2 <daeunki2@student.42.fr>          +#+  +:+       +#+        */
+/*   By: theveste <theveste@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/17 17:23:50 by daeunki2          #+#    #+#             */
-/*   Updated: 2024/10/17 17:23:50 by daeunki2         ###   ########.fr       */
+/*   Updated: 2024/10/18 16:29:55 by theveste         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,12 +22,12 @@ char	*assign_single_quote(char *line, int *i, int *quote_info, t_qtype *type)
 	size = 0;
 	(*i)++;
 	start = *i;
-	if (line[(*i)] == '\'' && quote_info[*i] == 1)
+	if (line[(*i)] == '\'' && quote_info[*i] == 1) // if '' in the string then return nothing cause we just remove the quote
 	{
 		result = ft_substr(line, start, 0);
 		return ((*i)++, result);
 	}
-	while (line[(*i)] && line[(*i)] != '\'' && quote_info[*i] == 1)
+	while (line[(*i)] && line[(*i)] != '\'' && quote_info[*i] == 1) // if ' ..... ' then count until next ' and then substring
 	{
 		size++;
 		(*i)++;

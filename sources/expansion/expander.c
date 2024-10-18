@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   expander.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: daeunki2 <daeunki2@student.42.fr>          +#+  +:+       +#+        */
+/*   By: theveste <theveste@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/17 17:24:20 by daeunki2          #+#    #+#             */
-/*   Updated: 2024/10/18 14:19:15 by daeunki2         ###   ########.fr       */
+/*   Updated: 2024/10/18 16:45:26 by theveste         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ void	split_expansions(t_lexeme *lexemes)
 	while (crnt)
 	{
 		next = crnt->next;
-		chop_lexeme_str(&crnt, &next);
+		chop_lexeme_str(&crnt, &next); // i don't know
 		crnt = crnt->next;
 	}
 	while (lexemes)
@@ -55,7 +55,7 @@ void	split_expansions(t_lexeme *lexemes)
 		if (lexemes->str[0] == '$' \
 			&& lexemes->str[1] != '\0' \
 			&& lexemes->type != 1)
-			lexemes->exp = TRUE;
+			lexemes->exp = TRUE; // if there is a dollar sign and the type is 1 so sq , we put exp to TRUE and will use it after
 		lexemes = lexemes->next;
 	}
 }
@@ -102,7 +102,7 @@ void	expansion(t_token **tokens)
 	while (crnt)
 	{
 		next = crnt->next;
-		expanded = token_to_etoken(crnt);
+		expanded = token_to_etoken(crnt); // expanded token, 
 		if (expanded)
 			expanded->type = crnt->type;
 		if (expanded)

@@ -6,7 +6,7 @@
 /*   By: daeunki2 <daeunki2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/17 17:22:54 by daeunki2          #+#    #+#             */
-/*   Updated: 2024/10/17 17:22:54 by daeunki2         ###   ########.fr       */
+/*   Updated: 2024/10/24 16:23:21 by daeunki2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,11 +79,14 @@ void	export_error(char *str)
 void	export_env(int fd)
 {
 	t_env	**env;
+	t_env	*temp;
 	t_env	*current;
 	int		i;
 
 	env = get_env_address();
-	current = *env;
+	current = copy_env_list(*env);
+	temp = current;
+	ft_sorted_envp(current);
 	if (!current)
 		return ;
 	while (current)
@@ -100,4 +103,32 @@ void	export_env(int fd)
 		ft_putstr_fd("\n", fd);
 		current = current->next;
 	}
+	clear_temp_env(temp);
 }
+
+
+// void	export_env(int fd)
+// {
+// 	t_env	**env;
+// 	t_env	*current;
+// 	int		i;
+
+// 	env = get_env_address();
+// 	current = *env;
+// 	if (!current)
+// 		return ;
+// 	while (current)
+// 	{
+// 		ft_putstr_fd("export ", fd);
+// 		if (*((ft_strchr(current->str, '=') + 1)))
+// 			ft_putstr_fd(current->str, fd);
+// 		else
+// 		{
+// 			i = 0;
+// 			while (current->str[i] && current->str[i] != '=')
+// 				ft_putchar_fd(current->str[i++], fd);
+// 		}
+// 		ft_putstr_fd("\n", fd);
+// 		current = current->next;
+// 	}
+// }

@@ -6,7 +6,7 @@
 /*   By: daeunki2 <daeunki2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/17 17:25:18 by daeunki2          #+#    #+#             */
-/*   Updated: 2024/10/17 17:25:18 by daeunki2         ###   ########.fr       */
+/*   Updated: 2024/10/21 17:40:05 by daeunki2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,15 +32,21 @@ t_token	*new_expanded_token(int *lexeme, int start, int len)
 	return (new);
 }
 
-void	copy_lexemes_to_int(int	*lexeme, t_lexeme *current, int *i, int *j)
+void	copy_lexemes_to_int(int	*lexeme, t_lexeme *current, int *i, int *j)// j == 0 //echo
 {
 	*i = 0;
 	while (current->str[*i])
 	{
-		if (is_ifs(current->str[*i]) && current->type == 0)
-			lexeme[(*j)++] = -1;
+		if (is_ifs(current->str[*i]) && current->type == 0)// \n \t white space == word
+		{
+			lexeme[(*j)] = -1;//list
+			(*j)++;
+		}
 		else
-			lexeme[(*j)++] = current->str[*i];
+		{
+			lexeme[(*j)] = current->str[*i];
+			(*j)++;
+		}
 		(*i)++;
 	}
 }
@@ -57,12 +63,12 @@ int	*lexemes_to_int(t_lexeme *lexemes, t_ttype type)
 	int			j;
 
 	j = 0;
-	lexeme = (int *)ft_calloc(lexemelen(lexemes, type) + 1, sizeof(int));
+	lexeme = (int *)ft_calloc(lexemelen(lexemes, type) + 1, sizeof(int));//"$hone"
 	current = lexemes;
 	while (current && lexeme)
 	{
-		while (current && current->exp == TRUE \
-		&& current->p_found == FALSE && type != heredoc)
+		while (current && current->exp == TRUE //"$homo" uq #homo == empty line
+		&& current->p_found == FALSE && type != heredoc)//skip $value skip envp vlaue heredoc $ho333
 			current = current->next;
 		if (current == 0)
 			break ;
@@ -72,7 +78,7 @@ int	*lexemes_to_int(t_lexeme *lexemes, t_ttype type)
 	return (lexeme);
 }
 
-t_token	*iword_to_tokens(int *lexeme)
+t_token	*iword_to_tokens(int *lexeme)//skip
 {
 	t_token	*result;
 	int		start;
@@ -82,10 +88,10 @@ t_token	*iword_to_tokens(int *lexeme)
 	start = 0;
 	while (lexeme[start])
 	{
-		while (lexeme[start] == -1)
+		while (lexeme[start] == -1)//white space
 			start++;
 		len = 0;
-		while (lexeme[start + len] && lexeme[start + len] != -1)
+		while (lexeme[start + len] && lexeme[start + len] != -1)//len of the word
 			len++;
 		if (append_token(&result, new_expanded_token(lexeme, start, len)) == -1)
 			return (result);

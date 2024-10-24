@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   lexemes.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: theveste <theveste@student.42.fr>          +#+  +:+       +#+        */
+/*   By: daeunki2 <daeunki2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/17 17:25:03 by daeunki2          #+#    #+#             */
-/*   Updated: 2024/10/18 16:44:05 by theveste         ###   ########.fr       */
+/*   Updated: 2024/10/24 14:41:33 by daeunki2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,8 +68,8 @@ int	lexemelen(t_lexeme *lexemes, t_ttype type)
 	return (count);
 }
 
-t_lexeme	*word_to_lexemes(char *str)
-{
+t_lexeme	*word_to_lexemes(char *str)//echo->$home->null;
+{                                        //up  dq    
 	int			i;
 	char		*newstr;
 	t_lexeme	*result;

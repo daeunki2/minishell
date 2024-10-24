@@ -6,7 +6,7 @@
 #    By: daeunki2 <daeunki2@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/10/18 12:30:35 by daeunki2          #+#    #+#              #
-#    Updated: 2024/10/18 14:08:54 by daeunki2         ###   ########.fr        #
+#    Updated: 2024/10/24 16:19:55 by daeunki2         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -56,6 +56,7 @@ OBJ_DIR = ./obj/
 OBJS = $(patsubst $(SRCS_DIRECTORY)%.c, $(OBJ_DIR)%.o, $(SRCS))
 
 SRCS =	$(PARSING_DIR)parser.c \
+			$(PARSING_DIR)token_check.c \
 			$(SIGNAL_DIR)signal.c \
 			$(SIGNAL_DIR)signal_heredoc.c \
 			$(SRCS_DIRECTORY)main.c \
@@ -86,6 +87,7 @@ SRCS =	$(PARSING_DIR)parser.c \
 			$(SRCS_DIRECTORY)builtins/exit/exit_utils.c\
 			$(SRCS_DIRECTORY)builtins/export/export.c \
 			$(SRCS_DIRECTORY)builtins/export/export_unset.c \
+			$(SRCS_DIRECTORY)builtins/export/export_copy.c \
 			$(SRCS_DIRECTORY)builtins/export/export_utils.c \
 			$(SRCS_DIRECTORY)builtins/pwd/pwd.c\
 			$(SRCS_DIRECTORY)builtins/unset/unset.c \

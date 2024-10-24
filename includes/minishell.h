@@ -6,7 +6,7 @@
 /*   By: daeunki2 <daeunki2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/17 12:11:59 by solee2            #+#    #+#             */
-/*   Updated: 2024/10/18 14:24:36 by daeunki2         ###   ########.fr       */
+/*   Updated: 2024/10/24 16:16:46 by daeunki2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,14 +41,14 @@ typedef struct s_env
 
 typedef enum e_quote_type
 {
-	uq, // no!! change later
-	sq, // single
-	dq  // doble
+	uq,
+	sq,
+	dq
 }					t_qtype;
 
 typedef enum e_token_type
 {
-	word, // 0
+	word,
 	in,
 	heredoc,
 	out,
@@ -114,6 +114,7 @@ int					*create_quote_info(char *line);
 /* parser.c */
 void				change_type(t_token *current, t_token *next);
 t_token				*parse_tokens(t_token **lst, void (*del)(void *));
+/*token_check.c*/
 int					token_error_check(t_token *tokens);
 int					check_tokens(t_token *tokens);
 void				print_parse_error(t_token **input);
@@ -268,6 +269,12 @@ void				export_env(int fd);
 /*export_unset*/
 void				pop_env_node(t_env **env, t_env **current, t_env **prev);
 int					export_unset(char *key);
+/*export_copy.c*/
+void	ft_sorted_envp(t_env *head);
+t_env	*create_new_node(const char *str);
+void	append_node(t_env **new_head, t_env *new_node);
+t_env	*copy_env_list(t_env *head);
+void	clear_temp_env(t_env *head);
 /* --------------------pwd--------------------*/
 /* pwd.c */
 int					ft_pwd(int fd);

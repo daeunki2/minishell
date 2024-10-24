@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: theveste <theveste@student.42.fr>          +#+  +:+       +#+        */
+/*   By: daeunki2 <daeunki2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/17 17:21:37 by daeunki2          #+#    #+#             */
-/*   Updated: 2024/10/18 16:15:30 by theveste         ###   ########.fr       */
+/*   Updated: 2024/10/24 11:44:37 by daeunki2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ int	terminate_minishell(void)
 	return (0);
 }
 
-void	do_the_job(t_token **tokens, t_job **jobs)
+void	do_do_the_job(t_token **tokens, t_job **jobs)
 {
 	t_token	**tmp;
 
@@ -43,13 +43,13 @@ t_token	**get_token_address(void)
 
 	return (&addr);
 }
-void	do_do_the_job(t_token *tokens, char *line, t_job *jobs)
+void	do_the_job(t_token *tokens, char *line, t_job *jobs)
 {
 	tokens = create_tokens(line);
 	if (check_tokens(tokens) != 0)
 		clear_tokens(&tokens, free);
 	else
-		do_the_job(&tokens, &jobs);
+		do_do_the_job(&tokens, &jobs);
 }
 
 int	main(int argc, char **argv, char **envp)
@@ -76,7 +76,7 @@ int	main(int argc, char **argv, char **envp)
 		if (ft_strlen(line) == 0)
 			continue ;
 		add_history(line);
-		do_do_the_job(tokens, line, jobs);
+		do_the_job(tokens, line, jobs);
 	}
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: daeunki2 <daeunki2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/17 12:11:59 by solee2            #+#    #+#             */
-/*   Updated: 2024/10/24 16:16:46 by daeunki2         ###   ########.fr       */
+/*   Updated: 2024/10/24 18:09:26 by daeunki2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -270,11 +270,13 @@ void				export_env(int fd);
 void				pop_env_node(t_env **env, t_env **current, t_env **prev);
 int					export_unset(char *key);
 /*export_copy.c*/
-void	ft_sorted_envp(t_env *head);
-t_env	*create_new_node(const char *str);
-void	append_node(t_env **new_head, t_env *new_node);
-t_env	*copy_env_list(t_env *head);
-void	clear_temp_env(t_env *head);
+t_env				*create_new_node(const char *str);
+void				append_node(t_env **new_head, t_env *new_node);
+void				free_env_list(t_env **head);
+t_env				*copy_env_list(t_env *head);
+void				clear_temp_env(t_env *head);
+/*sort_env.c*/
+void				ft_sorted_envp(t_env *head);
 /* --------------------pwd--------------------*/
 /* pwd.c */
 int					ft_pwd(int fd);

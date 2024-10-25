@@ -6,7 +6,7 @@
 /*   By: daeunki2 <daeunki2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/17 17:22:54 by daeunki2          #+#    #+#             */
-/*   Updated: 2024/10/24 16:23:21 by daeunki2         ###   ########.fr       */
+/*   Updated: 2024/10/24 17:55:34 by daeunki2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,10 +44,8 @@ int	middle_is_valid(char *str)
 int	middle_error_case(char *str)
 {
 	int	i;
-	int	flag;
 
 	i = 1;
-	flag = 0;
 	while (str[i])
 	{
 		if (str[i] == '\\')
@@ -55,16 +53,13 @@ int	middle_error_case(char *str)
 		if (str[i] == '=' && i == 0)
 			return (1);
 		if (str[i] == '=' && i != 0)
-		{	
-			flag = 1;
+		{
 			break ;
 		}
 		if (ft_isalnum(str[i]) == 0 && str[i] != '_')
 			return (1);
 		i++;
 	}
-	if (flag == 0)
-		return (1);
 	return (0);
 }
 
@@ -81,7 +76,6 @@ void	export_env(int fd)
 	t_env	**env;
 	t_env	*temp;
 	t_env	*current;
-	int		i;
 
 	env = get_env_address();
 	current = copy_env_list(*env);
@@ -92,43 +86,14 @@ void	export_env(int fd)
 	while (current)
 	{
 		ft_putstr_fd("export ", fd);
-		if (*((ft_strchr(current->str, '=') + 1)))
+		if ((ft_strchr(current->str, '=') != NULL && \
+		*(ft_strchr(current->str, '=') + 1)) || \
+		(ft_strchr(current->str, '=') == NULL))
 			ft_putstr_fd(current->str, fd);
 		else
-		{
-			i = 0;
-			while (current->str[i] && current->str[i] != '=')
-				ft_putchar_fd(current->str[i++], fd);
-		}
+			ft_putstr_fd(current->str, fd);
 		ft_putstr_fd("\n", fd);
 		current = current->next;
 	}
 	clear_temp_env(temp);
 }
-
-
-// void	export_env(int fd)
-// {
-// 	t_env	**env;
-// 	t_env	*current;
-// 	int		i;
-
-// 	env = get_env_address();
-// 	current = *env;
-// 	if (!current)
-// 		return ;
-// 	while (current)
-// 	{
-// 		ft_putstr_fd("export ", fd);
-// 		if (*((ft_strchr(current->str, '=') + 1)))
-// 			ft_putstr_fd(current->str, fd);
-// 		else
-// 		{
-// 			i = 0;
-// 			while (current->str[i] && current->str[i] != '=')
-// 				ft_putchar_fd(current->str[i++], fd);
-// 		}
-// 		ft_putstr_fd("\n", fd);
-// 		current = current->next;
-// 	}
-// }

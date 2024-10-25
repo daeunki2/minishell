@@ -6,7 +6,7 @@
 /*   By: daeunki2 <daeunki2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/17 17:23:00 by daeunki2          #+#    #+#             */
-/*   Updated: 2024/10/24 16:14:24 by daeunki2         ###   ########.fr       */
+/*   Updated: 2024/10/24 17:52:34 by daeunki2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,7 +99,7 @@ int	add_to_env(char *str)
 int	ft_export(t_job **lst, int fd)
 {
 	t_job	*current;
-	
+
 	current = *lst;
 	if (!current->arg)
 	{

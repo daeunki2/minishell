@@ -6,7 +6,7 @@
 /*   By: daeunki2 <daeunki2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/17 17:21:37 by daeunki2          #+#    #+#             */
-/*   Updated: 2024/10/24 11:44:37 by daeunki2         ###   ########.fr       */
+/*   Updated: 2024/10/24 19:13:14 by daeunki2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,9 +27,9 @@ void	do_do_the_job(t_token **tokens, t_job **jobs)
 	t_token	**tmp;
 
 	tmp = get_token_address();
-	*tmp = parse_tokens(tokens, free); //put the redirection option, either in or out in the node of the file
+	*tmp = parse_tokens(tokens, free);
 	expansion(get_token_address());
-	open_file_redir(get_token_address()); // just simple check
+	open_file_redir(get_token_address());
 	*jobs = extract_jobs(*get_token_address());
 	clear_tokens(get_token_address(), free);
 	sigaction_set_parent();
@@ -43,6 +43,7 @@ t_token	**get_token_address(void)
 
 	return (&addr);
 }
+
 void	do_the_job(t_token *tokens, char *line, t_job *jobs)
 {
 	tokens = create_tokens(line);

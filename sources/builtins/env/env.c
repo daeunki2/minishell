@@ -6,7 +6,7 @@
 /*   By: daeunki2 <daeunki2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/17 17:22:27 by daeunki2          #+#    #+#             */
-/*   Updated: 2024/10/17 17:22:27 by daeunki2         ###   ########.fr       */
+/*   Updated: 2024/10/24 18:09:45 by daeunki2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,8 +30,11 @@ void	ft_env(t_job **lst, int fd)
 	current = (*env);
 	while (current)
 	{
-		write(fd, current->str, ft_strlen(current->str));
-		write(fd, "\n", 1);
+		if (ft_strchr(current->str, '=') != NULL)
+		{
+			write(fd, current->str, ft_strlen(current->str));
+			write(fd, "\n", 1);
+		}
 		current = current->next;
 	}
 }

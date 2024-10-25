@@ -6,7 +6,7 @@
 /*   By: daeunki2 <daeunki2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/09 22:28:58 by daeunki2          #+#    #+#             */
-/*   Updated: 2024/10/18 14:13:46 by daeunki2         ###   ########.fr       */
+/*   Updated: 2024/10/24 19:51:12 by daeunki2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ char	*prompt_line(void)
 		perror("getcwd");
 		return (NULL);
 	}
-	prompt = ft_strjoin(cwd, "$");
+	prompt = ft_strjoin(cwd, ">");
 	free(cwd);
 	return (prompt);
 }

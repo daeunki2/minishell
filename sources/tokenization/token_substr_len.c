@@ -6,7 +6,7 @@
 /*   By: daeunki2 <daeunki2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/17 17:25:42 by daeunki2          #+#    #+#             */
-/*   Updated: 2024/10/21 14:01:35 by daeunki2         ###   ########.fr       */
+/*   Updated: 2024/10/24 19:19:57 by daeunki2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,8 +57,7 @@ int	token_word_len(char *line, int start, t_ttype *type, int *quote_info)
 	int	len;
 
 	len = 0;
-	while (!((is_op(line[start + len])
-				|| is_blank(line[start + len])) //echo "$HOME"
+	while (!((is_op(line[start + len]) || is_blank(line[start + len]))
 			&& !quote_info[start + len])
 		&& line[start + len])
 		len++;

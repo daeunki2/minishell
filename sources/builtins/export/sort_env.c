@@ -1,36 +1,42 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   replace.c                                          :+:      :+:    :+:   */
+/*   sort_env.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: daeunki2 <daeunki2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/17 17:25:10 by daeunki2          #+#    #+#             */
-/*   Updated: 2024/10/24 18:13:03 by daeunki2         ###   ########.fr       */
+/*   Created: 2024/10/24 18:00:56 by daeunki2          #+#    #+#             */
+/*   Updated: 2024/10/24 18:04:35 by daeunki2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-void	replace_params(t_lexeme *lexemes)
+void	ft_sorted_envp(t_env *head)
 {
-	t_lexeme	*current;
-	char		*newstr;
+	int		checker;
+	t_env	*now;
+	t_env	*last_pointer;
+	char	*temp;
 
-	current = lexemes;
-	while (current)
+	last_pointer = NULL;
+	while (1)
 	{
-		newstr = 0;
-		if (current->exp == TRUE)
+		checker = 0;
+		now = head;
+		while (now->next != last_pointer)
 		{
-			newstr = find_param(&(current->str[1]));
-			if (newstr)
+			if (ft_strncmp(now->str, now->next->str, ft_strlen(now->str)) > 0)
 			{
-				current->p_found = TRUE;
-				free(current->str);
-				current->str = newstr;
+				temp = now->str;
+				now->str = now->next->str;
+				now->next->str = temp;
+				checker = 1;
 			}
+			now = now->next;
 		}
-		current = current->next;
+		last_pointer = now;
+		if (checker == 0)
+			break ;
 	}
 }

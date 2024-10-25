@@ -6,7 +6,7 @@
 #    By: daeunki2 <daeunki2@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/10/18 12:30:35 by daeunki2          #+#    #+#              #
-#    Updated: 2024/10/24 16:19:55 by daeunki2         ###   ########.fr        #
+#    Updated: 2024/10/24 18:03:49 by daeunki2         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -89,6 +89,7 @@ SRCS =	$(PARSING_DIR)parser.c \
 			$(SRCS_DIRECTORY)builtins/export/export_unset.c \
 			$(SRCS_DIRECTORY)builtins/export/export_copy.c \
 			$(SRCS_DIRECTORY)builtins/export/export_utils.c \
+			$(SRCS_DIRECTORY)builtins/export/sort_env.c \
 			$(SRCS_DIRECTORY)builtins/pwd/pwd.c\
 			$(SRCS_DIRECTORY)builtins/unset/unset.c \
 			$(SRCS_DIRECTORY)builtins/cd/cd.c \

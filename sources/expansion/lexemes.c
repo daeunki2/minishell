@@ -6,7 +6,7 @@
 /*   By: daeunki2 <daeunki2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/17 17:25:03 by daeunki2          #+#    #+#             */
-/*   Updated: 2024/10/24 14:41:33 by daeunki2         ###   ########.fr       */
+/*   Updated: 2024/10/24 19:05:55 by daeunki2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,29 +68,29 @@ int	lexemelen(t_lexeme *lexemes, t_ttype type)
 	return (count);
 }
 
-t_lexeme	*word_to_lexemes(char *str)//echo->$home->null;
-{                                        //up  dq    
+t_lexeme	*word_to_lexemes(char *str)
+{
 	int			i;
 	char		*newstr;
 	t_lexeme	*result;
 	t_qtype		type;
 	int			*quote_info;
 
-	quote_info = create_quote_info(str); // quote marking for double validation of quoting in the string
+	quote_info = create_quote_info(str);
 	if (quote_info == 0)
 		return (NULL);
 	result = 0;
 	i = 0;
 	while (str[i])
 	{
-		if (str[i] == '\'' && quote_info[i] == 1) // double checking
-			newstr = assign_single_quote(str, &i, quote_info, &type); // new str would be the string without the quote, and the type, sq, uq, dq, would be given to the new str
+		if (str[i] == '\'' && quote_info[i] == 1)
+			newstr = assign_single_quote(str, &i, quote_info, &type);
 		else if (str[i] == '\"' && quote_info[i] == 2)
 			newstr = assign_double_quote(str, &i, quote_info, &type);
 		else if (str[i] && quote_info[i] == 0)
 			newstr = assign_non_quote(str, &i, quote_info, &type);
-		append_lexeme(&result, new_lexeme(newstr, type)); // we append the new unquoted string to a list, with the type given to, so that we can pass to the expansion and expand or not
+		append_lexeme(&result, new_lexeme(newstr, type));
 	}
-	split_expansions(result); // expanding
+	split_expansions(result);
 	return (free(quote_info), result);
 }

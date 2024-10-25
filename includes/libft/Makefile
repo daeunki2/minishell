@@ -61,7 +61,7 @@ clean :
 
 fclean : clean
 	@rm -f $(NAME)
-	@echo "$(BOLD_YELLOW)Cleaning libft.a.. $(NC)"
+	@echo "$(BOLD_MAGENTA)Cleaned libft.a.. $(NC)"
 
 re: fclean all
 

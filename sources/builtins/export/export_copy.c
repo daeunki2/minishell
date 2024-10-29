@@ -6,7 +6,7 @@
 /*   By: daeunki2 <daeunki2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/24 16:05:26 by daeunki2          #+#    #+#             */
-/*   Updated: 2024/10/24 18:04:18 by daeunki2         ###   ########.fr       */
+/*   Updated: 2024/10/29 10:32:28 by daeunki2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ t_env	*create_new_node(const char *str)
 	new_node = (t_env *)malloc(sizeof(t_env));
 	if (!new_node)
 		return (NULL);
-	new_node->str = strdup(str);
+	new_node->str = ft_strdup(str);
 	if (!new_node->str)
 	{
 		free(new_node);
